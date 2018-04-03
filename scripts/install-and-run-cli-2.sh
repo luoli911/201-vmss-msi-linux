@@ -75,7 +75,7 @@ sleep 10
 echo "---docker pull dotnet from eus.mcr.microsoft.com---"
 pullbegin=$(date +%s%3N)
 PullStartTime=$(date +%H:%M:%S)
-sudo docker pull eus.mcr.microsoft.com/dotnet
+sudo docker pull eus.mcr.microsoft.com/microsoft/mssql-server-linux:v1
 pullend=$(date +%s%3N)
 PullEndTime=$(date +%H:%M:%S)
 pulltime=$((pullend-pullbegin))
