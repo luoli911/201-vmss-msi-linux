@@ -83,28 +83,3 @@ echo "---nslookup eus.mcr.microsoft.com---"
 nslookup=$(nslookup eus.mcr.microsoft.com)
 echo registry,region,starttime,endtime,pulltime:eus.mcr.microsoft.com,eastus,$PullStartTime,$PullEndTime,$pulltime >> /mnt/azurefiles/$today/$machineName/mcr-output.log
 echo $nslookup >> /mnt/azurefiles/$today/$machineName/mcr-output.log
-
-echo "---Sort out Logs---"
-filePath="/mnt/azurefiles/$today/"
-
-function getAllFiles()
-{
-fileList=`ls $filePath`
-for fileName in $fileList
-    do
-      if [ -f $fileName ];then
-          echo `find $filePath|xargs grep -ri "pulltime"` >> /mnt/azurefiles/$today/mcr-output-all.log
-      elif test -d $fileName; then
-          cd $fileName
-          filePath=`pwd`
-          getAllFiles
-          cd ..
-       else
-          echo "$filePath is a invalid path"
-       fi
-     done
-}
-
-cd $filePath
-getAllFiles
-echo "DONE"
