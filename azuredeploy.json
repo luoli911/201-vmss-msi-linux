@@ -46,7 +46,7 @@
       },
       "minValue": 1,
       "maxValue": 100,
-      "defaultValue": 2
+      "defaultValue": 3
     },
     "overProvision": {
       "type": "bool",
