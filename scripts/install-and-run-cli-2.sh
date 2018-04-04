@@ -30,7 +30,6 @@ fi
 
 for var in storage_account resource_group
 do
-
     if [ -z ${!var} ]; then
         echo "Argument $var is not set" >&2
         exit 1
@@ -73,7 +72,7 @@ sleep 10
 function stresstest()
 {
 START=`date +%s`
-while [ $(( $(date +%s) - 600 )) -lt $START ]; do
+while [ $(( $(date +%s) - 1800 )) -lt $START ]; do
     echo "---docker pull dotnet from eus.mcr.microsoft.com---"
     sudo docker pull eus.mcr.microsoft.com/dotnet
 done
