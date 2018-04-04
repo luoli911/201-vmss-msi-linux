@@ -68,15 +68,26 @@ sudo systemctl start docker
 
 sleep 10
 
+echo "---docker pull dotnet from eus.mcr.microsoft.com---"
+pullbegin=$(date +%s%3N)
+PullStartTime=$(date +%H:%M:%S)
+sudo docker pull eus.mcr.microsoft.com/dotnet
+pullend=$(date +%s%3N)
+PullEndTime=$(date +%H:%M:%S)
+pulltime=$((pullend-pullbegin))
+echo "---nslookup eus.mcr.microsoft.com---"
+nslookup=$(nslookup eus.mcr.microsoft.com)
+echo registry,image,region,starttime,endtime,pulltime:eus.mcr.microsoft.com,dotnet,eastus,$PullStartTime,$PullEndTime,$pulltime >> /mnt/azurefiles/$today/$machineName/mcr-output.log
+echo $nslookup >> /mnt/azurefiles/$today/$machineName/mcr-output.log
 
-function stresstest()
-{
-START=`date +%s`
-while [ $(( $(date +%s) - 1800 )) -lt $START ]; do
-    echo "---docker pull dotnet from eus.mcr.microsoft.com---"
-    sudo docker pull eus.mcr.microsoft.com/dotnet
-done
-}
+#function stresstest()
+#{
+#START=`date +%s`
+#while [ $(( $(date +%s) - 1800 )) -lt $START ]; do
+#    echo "---docker pull dotnet from eus.mcr.microsoft.com---"
+#    sudo docker pull eus.mcr.microsoft.com/dotnet
+#done
+#}
 # stress test and concurrent pull other image 
-stresstest 
-wait
+#stresstest 
+#wait
