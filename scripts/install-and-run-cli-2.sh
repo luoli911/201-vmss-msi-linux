@@ -83,7 +83,7 @@ sleep 10
 function loadTest2()
 {
 ACR_NAME="NewACRLoadTestBuildCR"
-az login -u azcrci@microsoft.com -p LPrxL4cW3II8B8Hf76Uz/A==
+az login -u azcrci@microsoft.com -p $password
 az account set --subscription "c451bd61-44a6-4b44-890c-ef4c903b7b12"
 az extension remove -n acrbuildext
 az extension add --source https://acrbuild.blob.core.windows.net/cli/acrbuildext-0.0.2-py2.py3-none-any.whl -y
