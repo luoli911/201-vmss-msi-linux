@@ -1,4 +1,4 @@
-# Deploy A Linux VMSS with MSI
+# Deploy A Linux VMSS with MSI2
 
 This template shows how to use Managed Service Idenity with VM Scale Sets and how to access azure resources from within VMs in the Scale Set, in particular it shows how to:
 
